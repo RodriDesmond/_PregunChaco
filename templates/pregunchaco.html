@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+{{obj.nombre}}
+{% endblock %}
+<p>HOLA</p>
+
+{% block scripts %}
+<script scr={% static "/js/main.js" %} defer}></script>
+{% endblock scripts%}

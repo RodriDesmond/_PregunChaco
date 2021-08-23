@@ -1,0 +1,17 @@
+ {% extends 'base.html' %} {% block content %}
+<form>
+    <div class="form-goup">
+        <label>Categorias</label>
+        <select name="categoria" class="form-control">
+              <option value="elegir">---</option>
+              {% for categoria in categorias %}
+              <option value="{{categoria.nombre_categoria}}">
+                {{categoria.nombre_categoria}}
+              </option>
+              {% endfor %}
+            </select>
+    </div>
+    <button class="btn btn-outline-danger mt-3">COMENZAR</button>
+</form>
+
+{% endblock %}
