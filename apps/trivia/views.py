@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse, JsonResponse
+from django.http.response import Http404, HttpResponse, JsonResponse
 from .models import *
 from apps.preguntas.models import *
 import random
@@ -9,7 +9,6 @@ def home(request):
     context = {
         'categorias': Categoria.objects.all()
     }
-
     if request.GET.get('categoria'):
         return redirect(f"/pregunchaco/?categoria={request.GET.get('categoria')}")
     return render(request, 'home.html', context)
@@ -22,7 +21,7 @@ def pregunchaco(request):
     return render(request, 'pregunchaco.html', context)
 
 
-def empezar_trivia(request):
+def empezar_pregunchaco(request):
     try:
         pregunta_objs = Pregunta.objects.all()
 
@@ -33,6 +32,7 @@ def empezar_trivia(request):
         pregunta_objs = list(pregunta_objs)
         data = []
         random.shuffle(pregunta_objs)
+
         for pregunta_obj in pregunta_objs:
             data.append({
                 "id": pregunta_obj.id,

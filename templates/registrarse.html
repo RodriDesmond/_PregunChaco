@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<p class="h1">Bienvenido a PregunChaco</p>
+
+<form>
+    <p class="h4">Registrarse:</p>
+    <form method="post">
+        {% csrf_token %} {{ form }}
+        <button type="submit" class="btn btn-success">Registrar</button>
+    </form>
+</form>
+
+<div class=" gap-3 d-md-flex ">
+    <p class="h5">Ya te habias registrado?:</p>
+    <button class="btn btn-primary" type="login">Log In</button>
+</div>
+
+{% endblock %}

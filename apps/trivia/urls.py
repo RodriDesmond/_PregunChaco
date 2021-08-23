@@ -6,6 +6,6 @@ app_name = 'apps.trivia'
 urlpatterns = [
 
     path('', home, name='home'),
-    path('api/empezar-trivia/',empezar_trivia,name="empezar_trivia"),
+    path('api/',empezar_pregunchaco,name="api_preguntas"),
     path('pregunchaco/',pregunchaco, name="pregunchaco"),
 ]

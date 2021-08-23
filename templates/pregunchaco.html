@@ -1,10 +1,56 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block content %}
-{{obj.nombre}}
-{% endblock %}
-<p>HOLA</p>
+{% extends 'base.html' %}
+{% load static %}
 
 {% block scripts %}
-<script scr={% static "/js/main.js" %} defer}></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
+<script>
+    var app = new Vue({
+    el: '#app',
+    delimiters: ['[[', ']]'],
+        data() {
+            return {
+                categoria : '{{categoria}}',
+                preguntas : []
+            }
+        },
+        methods : {
+
+            getPreguntas(){
+                var _this = this
+                fetch(`/api/`)
+                .then(response => response.json())
+                .then(result =>{
+                    console.log(result)
+                    _this.preguntas = result.data
+                })
+            }
+        },
+        created() {
+            this.getPreguntas()
+            console.log('Pagina Cargada')
+        },
+    });
+</script>
+
+
 {% endblock scripts%}
+
+{% block content %}
+<div id="app">
+    <div class="container mt-5 pt-5">
+        <div class="col-md-6 mx-auto">
+        <h5>[[categoria]]</h5>
+        <div v-for="pregunta in preguntas" v-if="pregunta.categoria == categoria">
+            <h6>[[pregunta.pregunta_enunciado]]</h6>
+            <div class="form-check" v-for="respuesta in pregunta.respuestas">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  [[respuesta.respuesta]]
+                </label>
+            </div>
+        </div>            
+        </div>
+    </div>
+</div>
+{% endblock content%} 

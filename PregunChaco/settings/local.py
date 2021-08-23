@@ -1,29 +1,44 @@
 from .base import *
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '192.168.0.39']
+
+ALLOWED_HOSTS = []
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(os.path.dirname(BASE_DIR),'db.sqlite3'),
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'PregunChaco',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'asd',
+
+        'HOST': 'localhost',
+
+        'PORT': '5432',
     }
+    
 }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-#STATIC_ROOT = os.path.join(BASE_DIR,"static")
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+
 STATICFILES_DIRS = [
-    BASE_DIR, 'static',
+    os.path.join(BASE_DIR, 'static'),
 ]
 
+
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 
 print(STATICFILES_DIRS)
