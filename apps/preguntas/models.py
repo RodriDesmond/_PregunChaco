@@ -1,12 +1,11 @@
-from settings.base import BASE_DIR
-import os
+from PregunChaco.settings.local import MEDIA_ROOT
 from django.db import models
 from apps.trivia.models import BaseModel, Categoria
 from django.core.files.storage import FileSystemStorage
 import random
 
 # Create your models here.
-fs = FileSystemStorage(location=os.path.join(os.path.dirname(BASE_DIR),'media'))
+fs = FileSystemStorage(location=MEDIA_ROOT)
 
 class Pregunta(BaseModel):
     categoria = models.ForeignKey(Categoria, related_name='categoria', on_delete=models.CASCADE)
@@ -25,13 +24,13 @@ class Pregunta(BaseModel):
     def obtener_respuesta(self):
         respuesta_objs = list(Respuesta.objects.filter(pregunta = self))
         random.shuffle(respuesta_objs)    
-        data = []
+        respuestas = []
         for respuesta_obj in respuesta_objs:
-            data.append({
+            respuestas.append({
                 'respuesta': respuesta_obj.respuesta_enunciado,
                 'correcta': respuesta_obj.correcta,
             })
-        return data
+        return respuestas
 
 class Respuesta(BaseModel):
     pregunta = models.ForeignKey(Pregunta, related_name='pregunta',on_delete=models.CASCADE)

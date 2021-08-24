@@ -4,14 +4,14 @@
         <label>Categorias</label>
         <select name="categoria" class="form-control">
               <option value="elegir">---</option>
-              {% for categoria in categorias %}
+              {% for categoria in categorias %}  
               <option value="{{categoria.nombre_categoria}}">
                 {{categoria.nombre_categoria}}
               </option>
               {% endfor %}
             </select>
     </div>
-    <button class="btn btn-outline-danger mt-3" id="comenzar-btn">COMENZAR</button>
+    <button class="btn btn-danger mt-3" id="comenzar-btn">COMENZAR</button>
 </form>
 
 {% endblock %}

@@ -1,9 +1,8 @@
-import os
-from settings.base import BASE_DIR
+from PregunChaco.settings.local import MEDIA_ROOT
 from django.db import models
 from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location=os.path.join(os.path.dirname(BASE_DIR),'media')) 
+fs = FileSystemStorage(location=MEDIA_ROOT) 
 
 class BaseModel(models.Model):
     creado = models.DateField(auto_now_add=True)

@@ -27,12 +27,11 @@ def empezar_pregunchaco(request):
 
         if request.GET.get('categoria'):
             pregunta_objs = pregunta_objs.filter(
-                categoria__nombre_categoria__icontains=request.GET.get('categoria'))
+                categoria__nombre_categoria__icontains=request.GET.get('categoria')
+            )
 
         pregunta_objs = list(pregunta_objs)
         data = []
-        random.shuffle(pregunta_objs)
-
         for pregunta_obj in pregunta_objs:
             data.append({
                 "id": pregunta_obj.id,

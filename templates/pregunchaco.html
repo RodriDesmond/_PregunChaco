@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
 <script>
     var app = new Vue({
@@ -11,19 +11,33 @@
         data() {
             return {
                 categoria : '{{categoria}}',
-                preguntas : []
+                preguntas : [],
             }
         },
         methods : {
-
             getPreguntas(){
                 var _this = this
-                fetch(`/api/`)
+                fetch(`/api/pregunchaco/?categoria=${this.categoria}`)
                 .then(response => response.json())
                 .then(result =>{
                     console.log(result)
                     _this.preguntas = result.data
                 })
+            },
+            checkRespuesta(event, id){
+
+                this.preguntas.map(pregunta =>{
+                    respuestas = pregunta.respuestas
+                    for(var i=0; i < respuestas.length; i++){
+                        if(respuestas[i].respuesta == event.target.value)
+                            if(respuestas[i].correcta){
+                                console.log('Correcto')
+                            }else{
+                                console.log('INCORRECTO')
+                            }
+                    }
+                })
+                console.log(event.target.value, id)
             }
         },
         created() {
@@ -38,19 +52,20 @@
 
 {% block content %}
 <div id="app">
-    <div class="container mt-5 pt-5">
-        <div class="col-md-6 mx-auto">
         <h5>[[categoria]]</h5>
-        <div v-for="pregunta in preguntas" v-if="pregunta.categoria == categoria">
+        <hr>
+        <div v-for="(pregunta,index) in preguntas" :key="index">
+            <img v-bind:src="[pregunta.imagen]" class="rounded mx-auto d-block">
             <h6>[[pregunta.pregunta_enunciado]]</h6>
             <div class="form-check" v-for="respuesta in pregunta.respuestas">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input @change="checkRespuesta($event, pregunta.id)" :value="respuesta.respuesta" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                   [[respuesta.respuesta]]
                 </label>
             </div>
         </div>            
-        </div>
-    </div>
+        
 </div>
+<hr>
+
 {% endblock content%} 

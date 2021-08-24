@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     'apps.preguntas',
     'apps.trivia',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
