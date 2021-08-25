@@ -1,17 +1,15 @@
- {% extends 'base.html' %} {% block content %}
+ {% extends 'base.html' %} {% include 'sidebar.html'%} {% block content %}
 <form>
     <div class="form-goup">
-        <label>Categorias</label>
-        <select name="categoria" class="form-control">
-              <option value="elegir">---</option>
-              {% for categoria in categorias %}  
-              <option value="{{categoria.nombre_categoria}}">
-                {{categoria.nombre_categoria}}
-              </option>
+        <div class="input-group mb-3">
+            <select name="categoria" class="form-select" id="inputGroupSelect02">
+              <option selected name="categoria">Elegir una categoria...</option>
+              {% for categoria in categorias %}
+              <option value="{{categoria.nombre_categoria}}">{{categoria.nombre_categoria}}</option>
               {% endfor %}
             </select>
+            <button class="btn btn-success" id="comenzar-btn">¡EMPEZAR!</button>
+        </div>
     </div>
-    <button class="btn btn-danger mt-3" id="comenzar-btn">COMENZAR</button>
 </form>
-
 {% endblock %}

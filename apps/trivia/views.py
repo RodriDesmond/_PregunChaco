@@ -15,8 +15,10 @@ def home(request):
 
 
 def pregunchaco(request):
+
     context = {
-        'categoria': request.GET.get('categoria')
+        'categoria': request.GET.get('categoria'),
+        'logo_categoria' : request.GET.get('categoria.logo_url()'),
     }
     return render(request, 'pregunchaco.html', context)
 

@@ -1,29 +1,83 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- VUEJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js">
+    </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <title>PregunChaco</title>
-    <div class="text-center">
-        <img src="/media/Logo_PregunChaco_729_376.png" class="img-fluid">
-    </div>
 
-</head>
 
-<body background="/media/Fondo_Categorias_1920_1080.png">
-    <div class="container mt-auto pt-5">
-        <div class="col-md-9 mx-auto">
-            {% block content %} {% endblock %}
+    <!-- toggler -->
+    <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+        <i class="bi bi-arrow-right-square-fill fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">▪▪▪</i>
+    </button>
+
+    <div class="container-fluid p-4 mb-1  rounded-3">
+        <title>PregunChaco</title>
+        <div class="text-center">
+            <img src="/media/Logo_PregunChaco_729_376.png" class="img-fluid">
         </div>
     </div>
+</head>
 
-    {% block scripts %} {% endblock scripts %}
+<!-- sidebar -->
+<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+        <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h6>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+            <li class="nav-item">
+                <a href="{% url 'trivia:home' %}" class="nav-link text-truncate">
+                    <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                      </svg> Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                        <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+                      </svg> Ranking</span> </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-truncate">
+                    <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg> Perfil</span></a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-truncate">
+                    <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                      </svg> Contacto</span></a>
+            </li>
+            <hr>
+            <li>
+                <a href="#" class="nav-link text-truncate">
+                    <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Salir...</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<body background="/media/Fondo_Categorias_1920_1080.png">
+    <div id="contenedor-principal" class="container-sm shadow p-3 mb-1 rounded-3">
+        {% block content %} {% endblock %}
+    </div>
 </body>
+
+<link rel="stylesheet" href="/static/css/categorias.css">
 
 </html>
