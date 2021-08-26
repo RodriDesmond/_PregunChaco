@@ -1,1 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content%}
+
+<div class="container mt-5">
+    <ul class="list-group-item active">
+        <li class="list-group-item-active">Tu puntaje</li>
+        {% if puntaje %} {%else%}
+        <p class="text-center">Todavia no completaste ninguna trivia</p>
+        <a class="btn btn-dark" href="/">Jugar Ahora</a> {% endif%}
+    </ul>
+</div>
+
+
+{% endblock%}

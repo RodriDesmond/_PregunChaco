@@ -6,5 +6,6 @@ from .views import *
 app_name = 'apps.resultado'
 
 urlpatterns = [
-    path('ranking',view_puntaje, name="ranking" ),
+    path('puntaje',view_puntaje, name="puntaje" ),
+    path('api/pregunchaco/puntos',validar_puntos,name='Puntaje conseguido')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

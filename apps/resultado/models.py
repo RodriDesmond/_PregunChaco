@@ -4,6 +4,9 @@ from django.db import models
 
 # Create your models here.
 class Puntaje(models.Model):
-    trivia = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.IntegerField()
+    puntaje = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username
