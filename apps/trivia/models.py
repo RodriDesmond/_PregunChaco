@@ -1,4 +1,4 @@
-from PregunChaco.settings.local import MEDIA_ROOT
+from settings.local import MEDIA_ROOT
 from django.db import models
 from django.core.files.storage import FileSystemStorage
 

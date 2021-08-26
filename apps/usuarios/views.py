@@ -11,7 +11,6 @@ def register_attempt(request):
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from .forms import UserRegisterForm
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 def registro(request):
