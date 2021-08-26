@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('apps.trivia.urls',namespace='trivia')),    
     path('',include('apps.usuarios.urls',namespace='usuarios')),
+    path('',include('apps.resultado.urls',namespace='ranking')), 
     ## mediaConfiguration —— Con la configuración de MEDIA_ROOT en la configuración, puede acceder a la carpeta de medios y a los archivos en la barra de direcciones del navegador
     re_path(r'media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

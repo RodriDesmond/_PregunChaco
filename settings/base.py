@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.preguntas',
     'apps.trivia',
     'apps.usuarios',
+    'apps.resultado',
     'django_extensions',
     
 ]
