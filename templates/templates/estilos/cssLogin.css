@@ -18,16 +18,21 @@ body {
   background-size: cover;
   border-radius: 0%;
   border: none;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
 }
 
 .login-container {
-  height: 43.7em;
+  height: auto;
   width: 60em;
-  margin: 6em auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 10px;
   overflow: hidden;
+  align-items: center;
 }
 
 .login-info-container {
@@ -39,14 +44,13 @@ body {
   padding-top: 0.5rem;
   background-color: var(--login-bg);
   border-radius: 10px;
+  height: 60vh;
 }
 
 .image-container {
   width: 50%;
-  height: 50%;
   padding: 2rem;
   box-sizing: border-box;
-  margin-top: 18%;
 }
 
 .title {
@@ -144,26 +148,35 @@ body {
   font-weight: 600;
 }
 
+/* CAMBIO DE PANTALLA ----------------->TABLET <---------- */
 @media screen and (max-width: 1000px) {
-  .image-container {
-    display: none;
-  }
   .login-container {
     width: 70%;
     margin-top: 3rem;
   }
 
+  .image-container {
+    width: 90%;
+  }
+
   .login-info-container {
     width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .inputs-container p {
+    margin: 0.5rem;
   }
 }
 
+/* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
 @media screen and (max-width: 650px) {
   .login-container {
     width: 90%;
   }
 }
 
+/* CAMBIO DE PANTALLA -----------------> MAS CHICO <---------- */
 @media screen and (max-width: 500px) {
   .login-container {
     height: 90%;
