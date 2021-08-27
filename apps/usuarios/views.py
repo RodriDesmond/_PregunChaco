@@ -24,4 +24,4 @@ def registro(request):
         form = UserRegisterForm()    
 
     context = { 'form' : form }
-    return render(request, 'registrarse.html', context)
+    return render(request, 'registroTest.html', context)

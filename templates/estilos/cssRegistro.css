@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --login-bg: #e8fccf;
+  --title-bg: #000000;
+  --button-bg: #134611;
+  --light-pink: #134611;
+  --imagen-bg: #96e072;
+}
+
+body {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-image: linear-gradient(to top, #8cd195 0%, #c9fbc2 100%);
+  background-image: url(../imagenes/Imagen_Geografia_841_475.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 0%;
+  border: none;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-container {
+  height: auto;
+  width: 60em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.login-info-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 0.5rem;
+  background-color: var(--login-bg);
+  border-radius: 10px;
+  height: 60vh;
+}
+
+.image-container {
+  width: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.title {
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--title-bg);
+}
+
+.social-login {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.social-login-element {
+  width: 12.5rem;
+  height: 3.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--button-bg);
+}
+
+.imagen-social {
+  width: 1.875rem;
+  height: 1.875rem;
+  position: relative;
+  top: 0;
+  left: -0.625rem;
+}
+
+.social-login-element:hover {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.login-info-container > p {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.inputs-container {
+  height: 55%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input,
+.btn {
+  width: 90%;
+  height: 3.125rem;
+  font-size: 1em;
+}
+
+.input {
+  padding-left: 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+.input:hover {
+  border: 2px solid var(--button-bg);
+}
+
+.btn {
+  width: 80%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 5px;
+  background-color: var(--button-bg);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.inputs-container p {
+  margin: 0;
+}
+
+.span {
+  color: var(--light-pink);
+  font-weight: 600;
+}
+
+/* CAMBIO DE PANTALLA ----------------->TABLET <---------- */
+@media screen and (max-width: 1000px) {
+  .login-container {
+    width: 70%;
+    margin-top: 3rem;
+  }
+
+  .image-container {
+    width: 90%;
+  }
+
+  .login-info-container {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .inputs-container p {
+    margin: 0.5rem;
+  }
+}
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
+@media screen and (max-width: 650px) {
+  .login-container {
+    width: 90%;
+  }
+}
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR MAS CHICO <---------- */
+@media screen and (max-width: 500px) {
+  .login-container {
+    height: 90%;
+  }
+
+  .social-login {
+    flex-direction: column;
+    align-items: center;
+    height: 30%;
+  }
+
+  .login-info-container > p {
+    margin: 0;
+  }
+}

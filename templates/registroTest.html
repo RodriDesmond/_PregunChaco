@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TITULO DE LA PÁGINA -->
+    <title>PregunChaco Registro</title>
+
+    <!-- CSS PRESONALIZADOS -->
+    <link rel="stylesheet" href="{% static 'css/cssRegistro.css' %}" />
+  </head>
+  <body>
+    <div class="login-container">
+      <img
+        class="image-container"
+        src="{% static 'imagenes/Logo_PregunChaco_729_376.png' %}"
+        alt="login"
+      />
+      <div class="login-info-container">
+        <h1 class="title">Ingresá con:</h1>
+        <div class="social-login">
+          <div class="social-login-element">
+            <img
+              class="imagen-social"
+              src="{% static 'imagenes/google.svg' %}"
+              alt="google-imagen"
+            />
+            <span>Google</span>
+          </div>
+          <div class="social-login-element">
+            <img
+              class="imagen-social"
+              src="{% static 'imagenes/facebook.svg' %}"
+              alt="facebook-imagen"
+            />
+            <span>Facebook</span>
+          </div>
+        </div>
+        <hr class="linea" />
+        <form action="" method="post" class="inputs-container">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" id="submit" class="btn">Ingresar</button>
+          <p>
+            ¿Ya tenés cuenta?:
+            <a class="span" href="{% url 'usuarios:login' %}">Ingresá acá</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

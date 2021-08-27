@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'apps.resultado',
 
     'django_extensions',
-    
 ]
 
 MIDDLEWARE = [
