@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es-AR">
   <head>
@@ -9,13 +11,13 @@
     <title>PregunChaco Registro</title>
 
     <!-- CSS PRESONALIZADOS -->
-    <link rel="stylesheet" href="estilos/cssRegistro.css" />
+    <link rel="stylesheet" href="{% static 'css/cssRegistro.css' %}" />
   </head>
   <body>
     <div class="login-container">
       <img
         class="image-container"
-        src="imagenes/Logo_PregunChaco_729_376.png"
+        src="{% static 'imagenes/Logo_PregunChaco_729_376.png' %}"
         alt="login"
       />
       <div class="login-info-container">
@@ -24,7 +26,7 @@
           <div class="social-login-element">
             <img
               class="imagen-social"
-              src="imagenes/google.svg"
+              src="{% static 'imagenes/google.svg' %}"
               alt="google-imagen"
             />
             <span>Google</span>
@@ -32,7 +34,7 @@
           <div class="social-login-element">
             <img
               class="imagen-social"
-              src="imagenes/facebook.svg"
+              src="{% static 'imagenes/facebook.svg' %}"
               alt="facebook-imagen"
             />
             <span>Facebook</span>
@@ -40,13 +42,12 @@
         </div>
         <p>o</p>
         <form action="" method="post" class="inputs-container">
-          <input type="text" placeholder="Usuario" class="input" />
-          <input type="text" placeholder="Contraseña" class="input" />
-          <p>
-            ¿Te olvidaste tu Contraseña?: <span class="span">Click acá</span>
-          </p>
+          {% csrf_token %} {{ form.as_p }}
           <button type="submit" class="btn">Ingresar</button>
-          <p>¿No tenés cuenta?: <span class="span">Crea un cuenta</span></p>
+          <p>
+            ¿Ya tenés cuenta?:
+            <a class="span" href="{% url 'usuarios:login' %}">Ingresá acá</a>
+          </p>
         </form>
       </div>
     </div>
