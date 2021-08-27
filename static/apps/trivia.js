@@ -6,6 +6,8 @@ var app = new Vue({
             categoria: document.getElementById("categoria").value,
             preguntas: [],
             soluciones: [],
+            preguntasPorPagina: 1,
+            datosPaginados: [],
         }
     },
     methods: {
@@ -33,6 +35,18 @@ var app = new Vue({
                     console.log(result)
                     _this.preguntas = result.data
                 })
+        },
+        getDataPagina(nPagina) {
+            this.PagActual = nPagina
+            this.datosPaginados = []
+            let ini = (nPagina * this.preguntasPorPagina) - this.preguntasPorPagina
+            let fin = (nPagina * this.preguntasPorPagina)
+            this.datosPaginados = this.preguntas.slice(ini, fin)
+        },
+        totalPaginas() {
+            console.log(this.preguntas.length / this.preguntasPorPagina)
+            return Math.ceil(this.preguntas.length / this.preguntasPorPagina)
+
         },
         checkRespuesta(event, resultado_index, id) {
             this.preguntas.map(pregunta => {
@@ -67,9 +81,9 @@ var app = new Vue({
             })
         }
     },
-
-    created() {
+    mounted() {
         this.getPreguntas()
+        this.totalPaginas()
         console.log('Pagina Cargada')
     },
 });
