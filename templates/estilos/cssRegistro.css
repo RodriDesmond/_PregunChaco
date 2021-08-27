@@ -176,7 +176,7 @@ body {
   }
 }
 
-/* CAMBIO DE PANTALLA -----------------> MAS CHICO <---------- */
+/* CAMBIO DE PANTALLA -----------------> CELULAR MAS CHICO <---------- */
 @media screen and (max-width: 500px) {
   .login-container {
     height: 90%;
