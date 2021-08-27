@@ -10,7 +10,20 @@ var app = new Vue({
     },
     methods: {
         enviarResultado() {
-            console.log(this.soluciones)
+            fetch('/api/pregunchaco/puntos', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: JSON.stringify(this.soluciones)
+                    })
+                })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result)
+                })
         },
         getPreguntas() {
             var _this = this
@@ -29,21 +42,26 @@ var app = new Vue({
                 var radios = document.querySelectorAll(`#radio-${id}`)
                 for (var i = 0; i < respuestas.length; i++) {
                     if (respuestas[i].respuesta == event.target.value) {
-                        solucion = {
-                            'pregunta_id': id,
-                            'respuesta': respuestas[i].respuesta
-                        }
-                        this.soluciones.push(solucion)
+
                         for (var j = 0; j < respuestas.length; j++) {
                             radios[j].disabled = true
                         }
                         if (respuestas[i].correcta) {
                             element.classList = "text-success mt-3"
                             element.innerHTML = "Correcto 🤩"
+                            correcto = true
                         } else {
                             element.classList = "text-danger mt-3"
                             element.innerHTML = "Incorrecto 😵"
+                            correcto = false
                         }
+                        solucion = {
+                            'categoria': pregunta.categoria,
+                            'pregunta_id': id,
+                            'correcto': correcto,
+                            'respuesta': respuestas[i].respuesta
+                        }
+                        this.soluciones.push(solucion)
                     }
                 }
             })
