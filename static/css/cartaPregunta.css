@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+:root {
+    --login-bg: #e8fccf;
+    --title-bg: #000000;
+    --button-bg: #134611;
+    --light-pink: #134611;
+    --imagen-bg: #96e072;
+}
+
+* {
+    transition: all 0.3s;
+    font-family: "Poppins", sans-serif;
+}
+
+.card {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(116, 170, 107);
+    background: radial-gradient(circle, rgba(116, 170, 107, 1) 0%, rgba(155, 219, 144, 1) 0%, rgba(0, 175, 78, 1) 72%);
+    align-items: center;
+    border: black;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--title-bg);
+}
+
+.list-group-item {
+    height: 55%;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: var(--login-bg);
+    border: 10px;
+    border-radius: 10px;
+}
+
+.list-group-item:disabled {
+    height: 55%;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: firebrick;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-check-input {
+    height: 20px;
+    width: 20px;
+    padding: 0px;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.form-check-input:hover {
+    height: 20px;
+    width: 20px;
+    background-color: palevioletred;
+}
+
+.form-check-input:checked {
+    height: 20px;
+    width: 20px;
+    background-color: palevioletred;
+}

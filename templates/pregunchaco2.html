@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- ESTE HIDDEN INPUT PASA EL NOMBRE DE LA CATEGORIA AL JS-->
+<input type="hidden" id="categoria" name="categoria" value="{{categoria}}">
+<div id="app">
+    <img v-bind:src="[preguntas[0].logo_categoria]" class="img-fluid" id="logo">
+    <form @submit.prevent="enviarResultado()">
+        <div class="card">
+            <div class="card-body">
+
+                <div v-for="(pregunta,index) in preguntas" :key="index ">
+                    <img v-bind:src="[pregunta.imagen]" class="img-fluid" id="imagen" alt="...">
+                    <hr>
+                    <h4>[[pregunta.pregunta_enunciado]]</h4>
+
+                    <div class="form-check" v-for="(respuesta,i) in pregunta.respuestas">
+                        <input @change="checkRespuesta($event,index,i, pregunta.id)" :value="respuesta.respuesta" class="form-check-input" type="radio" :name="'radio-'+pregunta.id" :id="'radio-'+pregunta.id">
+                        <label class="form-check-label" for="'radio-'+pregunta.id">
+                    [[i+1]]- [[respuesta.respuesta]] 
+            </label>
+                    </div>
+                    <p :id=" 'mensaje_respuesta-'+pregunta.id "></p>
+                    <blockquote class="blockquote">
+                        <p :id=" 'dato-'+pregunta.id "></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-danger" type="submit">Terminar</button>
+    </form>
+</div>
+
+<script src="{% static 'apps/trivia.js'%} "></script>
+{% endblock content%}

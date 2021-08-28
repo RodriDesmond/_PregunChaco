@@ -50,13 +50,11 @@ var app = new Vue({
                         if (respuestas[i].correcta) {
                             element.classList = "text-success mt-3"
                             element.innerHTML = "Correcto 🤩"
-                            dato.classList = "text-success mt-3"
-                            dato.innerHTML = `<strong><em>[[pregunta.dato]]</em></strong >`
+                            dato.innerHTML = `<strong><em>${[[pregunta.dato]]}</em></strong >`
                             correcto = true
                         } else {
                             element.classList = "text-danger mt-3"
                             element.innerHTML = "Incorrecto 😵"
-                            dato.classList = "text-success mt-3"
                             dato.innerHTML = `<strong><em>${[[pregunta.dato]]}</em></strong >`
                             correcto = false
                         }
