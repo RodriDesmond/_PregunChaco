@@ -1,20 +1,26 @@
 from django.contrib.auth.decorators import login_required
-from django.http.response import Http404, HttpResponse, JsonResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from apps.preguntas.models import *
 import random
 from django.shortcuts import redirect, render
 
+
 @csrf_exempt
 @login_required(login_url='/login')
 def home(request):
+    return render(request,'home.html')
+
+@csrf_exempt
+@login_required(login_url='/login')
+def elegir_categorias(request):
     context = {
         'categorias': Categoria.objects.all()
     }
     if request.GET.get('categoria'):
         return redirect(f"/pregunchaco/?categoria={request.GET.get('categoria')}")
-    return render(request, 'home.html', context)
+    return render(request, 'categorias.html', context)
 
 @csrf_exempt
 @login_required(login_url='/login')

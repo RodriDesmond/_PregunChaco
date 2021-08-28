@@ -1,0 +1,15 @@
+{% extends 'base.html'%}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/editar_perfil.css' %}" />
+<div class="editar-container">
+    <div class="editar-perfil-container">
+        <h1 class="title">Editar Perfil:</h1>
+        <hr class="linea" />
+        <form action="" method="POST" enctype="multipart/form-data" class="inputs-container">
+            {% csrf_token %} {{ form.media }}{{ form.as_p }}
+            <button type="submit" id="submit" class="btn">Guardar</button>
+
+        </form>
+        <a class="btn btn-danger text-center" href="/" role="button" id="cancelar">Cancelar</a>
+    </div>
+</div>
+{% endblock %}
