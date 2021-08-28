@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load%}
 <!DOCTYPE html>
 <html lang="es-AR">
 
@@ -6,15 +6,50 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <div class="container-fluid p-4 mb-1  rounded-3">
-        <title>PregunChaco</title>
-        <div class="text-center">
-            <img src="/media/Logo_PregunChaco_729_376.png" class="img-fluid">
+    <!--NAVBAR-->>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{% static '/imagenes/Logo_PregunChaco_729_376.png'%}" alt="" width="30" height="24" class="d-inline-block align-text-top"> PregunChaco
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Categorias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Perfil
+                </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'ranking:puntaje' %}">Tus Puntajes</a></li>
+                            <li><a class="dropdown-item" href="#">Rankings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Salir...</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</head>
+    </nav>
 
+    <!--LOGO-->>
+    <div class="container-sm">
+        <img src="{% static '/imagenes/Logo_PregunChaco_729_376.png'%}" class="img-fluid" id="imagen" alt="...">
+    </div>
+
+</head>
 <!-- VUE JS -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
@@ -25,7 +60,11 @@
 <link rel="stylesheet" href="/static/css/categorias.css">
 
 <body background="/media/Fondo_Categorias_1920_1080.png">
-    <div id="contenedor-principal" class="container-sm shadow p-3 mb-1 rounded-3">
+
+
+
+
+    <div id="contenedor-principal" class="container-sm shadow mt-5 p-2 pt-4 rounded-3">
         {% block content %} {% endblock %}
     </div>
 </body>

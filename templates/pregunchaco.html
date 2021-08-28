@@ -2,12 +2,12 @@
 
 <!-- ESTE HIDDEN INPUT PASA EL NOMBRE DE LA CATEGORIA AL JS-->
 <input type="hidden" id="categoria" name="categoria" value="{{categoria}}">
-
+<link rel="stylesheet" href="{% static 'estilos/cssPreguntas.css'%}" />
 <div id="app">
     <img v-bind:src="[preguntas[0].logo_categoria]" class="img-fluid" id="logo">
     <form @submit.prevent="enviarResultado()">
         <div v-for="(pregunta,index) in preguntas" :key="index ">
-            <img v-bind:src="[pregunta.imagen]" class="img-fluid" alt="...">
+            <img v-bind:src="[pregunta.imagen]" class="img-fluid" id="imagen" alt="...">
             <hr>
             <h4>[[pregunta.pregunta_enunciado]]</h4>
 
