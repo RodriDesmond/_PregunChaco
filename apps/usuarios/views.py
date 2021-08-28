@@ -8,10 +8,11 @@ def login_attempt(request):
 def register_attempt(request):
     return render(request,'auth/register.html')'''
 
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import *
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.urls import reverse
 
 def registro(request):
     if request.method == 'POST':
@@ -20,6 +21,7 @@ def registro(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado correctamente')
+            return redirect('/login/')
     else:
         form = UserRegisterForm()    
 
