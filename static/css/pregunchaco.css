@@ -1,14 +1,7 @@
 * {
-    transition: all 0.3s;
+    transition: all 0.1s;
     font-family: calibri;
     font-size: 120%;
-}
-
-body {
-    background: slategray;
-    padding: 0;
-    margin: 0;
-    text-align: center;
 }
 
 .contenedor {

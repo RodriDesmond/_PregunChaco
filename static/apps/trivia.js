@@ -6,8 +6,7 @@ var app = new Vue({
             categoria: document.getElementById("categoria").value,
             preguntas: [],
             soluciones: [],
-            preguntasPorPagina: 1,
-            datosPaginados: [],
+            curiosidad: false,
         }
     },
     methods: {
@@ -36,37 +35,33 @@ var app = new Vue({
                     _this.preguntas = result.data
                 })
         },
-        getDataPagina(nPagina) {
-            this.PagActual = nPagina
-            this.datosPaginados = []
-            let ini = (nPagina * this.preguntasPorPagina) - this.preguntasPorPagina
-            let fin = (nPagina * this.preguntasPorPagina)
-            this.datosPaginados = this.preguntas.slice(ini, fin)
-        },
-        totalPaginas() {
-            console.log(this.preguntas.length / this.preguntasPorPagina)
-            return Math.ceil(this.preguntas.length / this.preguntasPorPagina)
-
-        },
         checkRespuesta(event, resultado_index, id) {
             this.preguntas.map(pregunta => {
                 respuestas = pregunta.respuestas
                 id = pregunta.id
                 var element = document.getElementById(`mensaje_respuesta-${id}`)
+                var dato = document.getElementById(`dato-${id}`)
                 var radios = document.querySelectorAll(`#radio-${id}`)
                 for (var i = 0; i < respuestas.length; i++) {
                     if (respuestas[i].respuesta == event.target.value) {
-
                         for (var j = 0; j < respuestas.length; j++) {
                             radios[j].disabled = true
                         }
                         if (respuestas[i].correcta) {
                             element.classList = "text-success mt-3"
                             element.innerHTML = "Correcto 🤩"
+                            dato.classList = "text-success mt-3"
+                            dato.innerHTML = [
+                                [pregunta.dato]
+                            ]
                             correcto = true
                         } else {
                             element.classList = "text-danger mt-3"
                             element.innerHTML = "Incorrecto 😵"
+                            dato.classList = "text-success mt-3"
+                            dato.innerHTML = [
+                                [pregunta.dato]
+                            ]
                             correcto = false
                         }
                         solucion = {
@@ -83,7 +78,6 @@ var app = new Vue({
     },
     mounted() {
         this.getPreguntas()
-        this.totalPaginas()
         console.log('Pagina Cargada')
     },
 });

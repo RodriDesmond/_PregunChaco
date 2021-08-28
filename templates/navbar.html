@@ -13,7 +13,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'trivia:categorias' %}">Categorias</a>
+                    <a class="nav-link" href="{% url 'trivia:categorias' %}">¡Jugar!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ranking</a>
                 </li>
 
             </ul>
@@ -30,7 +33,6 @@
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'usuarios:editar_perfil' %}">Editar Perfil</a></li>
                         <li><a class="dropdown-item" href="{% url 'ranking:puntaje' %}">Tus Puntajes</a></li>
-                        <li><a class="dropdown-item" href="#">Rankings</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
@@ -29,7 +30,6 @@ class UserEditView(UpdateView):
 
     def get_object(self):
         return self.request.user
-
 
 class VerPerfilView(DetailView):
     model = Perfil
