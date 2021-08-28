@@ -51,17 +51,13 @@ var app = new Vue({
                             element.classList = "text-success mt-3"
                             element.innerHTML = "Correcto 🤩"
                             dato.classList = "text-success mt-3"
-                            dato.innerHTML = [
-                                [pregunta.dato]
-                            ]
+                            dato.innerHTML = `<strong><em>[[pregunta.dato]]</em></strong >`
                             correcto = true
                         } else {
                             element.classList = "text-danger mt-3"
                             element.innerHTML = "Incorrecto 😵"
                             dato.classList = "text-success mt-3"
-                            dato.innerHTML = [
-                                [pregunta.dato]
-                            ]
+                            dato.innerHTML = `<strong><em>${[[pregunta.dato]]}</em></strong >`
                             correcto = false
                         }
                         solucion = {
