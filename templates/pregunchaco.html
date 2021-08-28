@@ -8,13 +8,14 @@
 <div id="app">
     <img v-bind:src="[preguntas[0].logo_categoria]" class="img-fluid" id="logo">
     <form @submit.prevent="enviarResultado()">
-        <div class="card" style="width: 95%;">
+        <div class="card">
             <div v-for="(pregunta,index) in preguntas" :key="index ">
-                <div class="card-body">
-                    <img v-bind:src="[pregunta.imagen]" class="card-img-top" alt="...">
-                    <hr>
+                <div class="card-block">
+                    </hr>
                     <h5 class="card-title">[[pregunta.pregunta_enunciado]]</h5>
+                    <img v-bind:src="[pregunta.imagen]" class="card-img-top" alt="...">
                 </div>
+
                 <ul class="list-group list-group-flush">
                     <div class="form-check" v-for="(respuesta,i) in pregunta.respuestas">
                         <li class="list-group-item"> <input @change="checkRespuesta($event,index,i, pregunta.id)" :value="respuesta.respuesta" class="form-check-input" type="radio" :name="'radio-'+pregunta.id" :id="'radio-'+pregunta.id">
