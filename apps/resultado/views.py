@@ -25,7 +25,6 @@ def validar_puntos(request):
     soluciones = json.loads(data.get('data'))
     categoria = soluciones[0].get('categoria')    
     puntaje = 0
-
     
     for solucion in soluciones:
         pregunta = Pregunta.objects.filter(id = solucion.get('pregunta_id')).first()

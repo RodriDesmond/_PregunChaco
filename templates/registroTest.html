@@ -40,10 +40,10 @@
             <span>Facebook</span>
           </div>
         </div>
-        <p>o</p>
+        <hr class="linea" />
         <form action="" method="post" class="inputs-container">
           {% csrf_token %} {{ form.as_p }}
-          <button type="submit" class="btn">Ingresar</button>
+          <button type="submit" id="submit" class="btn">Ingresar</button>
           <p>
             ¿Ya tenés cuenta?:
             <a class="span" href="{% url 'usuarios:login' %}">Ingresá acá</a>

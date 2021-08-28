@@ -19,3 +19,9 @@
     font-size: 90px;
     font-family: fantasy;
 }
+
+#imagen {
+    object-fit: scale-down;
+    height: 200px;
+    width: 100%;
+}

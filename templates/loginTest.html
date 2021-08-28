@@ -59,13 +59,12 @@
           <form method="post" class="inputs-container form">
             {% csrf_token %} {{ form.as_p }}
 
-            <p>
-              ¿Te olvidaste tu Contraseña?: <span class="span">Click acá</span>
-            </p>
-            <button type="submit" class="btn">Ingresar</button>
-            <p>¿No tenés cuenta?: <a class="span">Crea un cuenta</a></p>
-          </form>
-        </div>
+          <p>
+            ¿Te olvidaste tu Contraseña?: <span class="span">Click acá</span>
+          </p>
+          <button type="submit" id="submit" class="btn">Ingresar</button>
+          <p>¿No tenés cuenta?: <a class="span">Crea un cuenta</a></p>
+        </form>
       </div>
     </body>
 </html>
