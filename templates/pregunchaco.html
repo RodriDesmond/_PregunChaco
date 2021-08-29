@@ -5,6 +5,25 @@
 
 <!--CSS para cada pregunta-->
 <link rel="stylesheet" href="/static/css/cartaPregunta.css">
+
+<!--Este modal se activa terminar la trivia-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">{{categoria}}: Puntaje guardado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>¡Gracias por jugar!</h3>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="{% url 'ranking:puntaje' %}" role="button">Ver tus resultados</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="app">
     <img v-bind:src="[preguntas[0].logo_categoria]" class="img-fluid" id="logo">
     <form @submit.prevent="enviarResultado()">
@@ -35,8 +54,11 @@
             </div>
 
         </div>
-        <button class="btn btn-danger mt-5" type="submit">Terminar</button>
+        <div class="d-grid gap-2">
+            <button class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">Terminar</button>
+        </div>
     </form>
+
 </div>
 
 <script src="{% static 'apps/trivia.js'%} "></script>

@@ -1,17 +1,42 @@
 {% extends 'base.html' %} {% block content%}
 
+<div class="container mt-3" style="width: 700px;">
+    <h1 style="color:ghostwhite">
+        Tus ultimas puntuaciones:
+    </h1>
+    <ul class="list-group">
+        {% for p in puntaje%}
+        <li class="list-group-item
+                           d-flex 
+                           justify-content-between 
+                           align-items-center
+                           rounded-3">
+            <h3><strong>{{p.categoria}}</strong></h3>
+
+            <h3><span class="badge bg-success">
+                {{p.puntaje}} puntos
+            </span></h3>
+
+        </li>
+        <p style="text-align: end">Fecha: {{p.update}}</p>
+        {% endfor %} {% if puntaje %} {%else%}
+        <p class="text-center">Todavia no completaste ninguna trivia</p>
+        <a class="btn btn-dark align-content-center" href="{% url 'trivia:categorias' %}">Jugar Ahora</a> {% endif%}
+    </ul>
+</div>
 
 <ol class="list-group list-group-numbered">
     {% for p in puntaje%}
     <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
-            <div class="fw-bold">{{p.categoria}}</div>
-            Fecha:
+            <div class="fw-bold">Categoria: {{p.categoria}}</div>
         </div>
-        <button type="button" class="btn btn-success">
-            Puntaje <span class="badge bg-secondary">{{p.puntaje}}</span>
-          </button>
+        <h4>Puntaje <span class="badge bg-dark">{{p.puntaje}}</span></h4>
+
     </li>
+    <blockquote class="blockquote">
+        <p>Fecha: {{p.update}}</p>
+    </blockquote>
     {% endfor %}
 </ol>
 {% if puntaje %} {%else%}

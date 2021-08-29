@@ -4,7 +4,6 @@
 }
 
 #contenedor-principal {
-    opacity: 0.9;
     background: rgb(116, 170, 107);
     background: radial-gradient(circle, rgba(116, 170, 107, 1) 0%, rgba(155, 219, 144, 1) 0%, rgba(0, 175, 78, 1) 72%);
     height: auto;

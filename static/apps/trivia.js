@@ -35,7 +35,7 @@ var app = new Vue({
                     _this.preguntas = result.data
                 })
         },
-        checkRespuesta(event, resultado_index, id) {
+        checkRespuesta(event, id) {
             this.preguntas.map(pregunta => {
                 respuestas = pregunta.respuestas
                 id = pregunta.id

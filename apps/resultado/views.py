@@ -1,8 +1,9 @@
 from django.http.response import JsonResponse
+from django.urls.base import reverse_lazy
 from apps.preguntas.models import Pregunta, Respuesta
 import json
 from apps.resultado.models import Puntaje
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
@@ -30,9 +31,9 @@ def validar_puntos(request):
         pregunta = Pregunta.objects.filter(id = solucion.get('pregunta_id')).first()
         if solucion.get('correcto'):
             puntaje = puntaje + pregunta.puntos
-
+        
    
     puntaje_total = Puntaje(categoria = categoria , puntaje = puntaje  , user = user)
-    puntaje_total.save() 
-    
+    puntaje_total.save()
+
     return JsonResponse({'message' : 'puntos cargados' , 'status':True})
