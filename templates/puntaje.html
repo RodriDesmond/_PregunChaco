@@ -25,30 +25,15 @@
     </ul>
 </div>
 
-<ol class="list-group list-group-numbered">
-    {% for p in puntaje%}
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Categoria: {{p.categoria}}</div>
-        </div>
-        <h4>Puntaje <span class="badge bg-dark">{{p.puntaje}}</span></h4>
-
-    </li>
-    <blockquote class="blockquote">
-        <p>Fecha: {{p.update}}</p>
-    </blockquote>
-    {% endfor %}
-</ol>
-{% if puntaje %} {%else%}
-<p class="text-center">Todavia no completaste ninguna trivia</p>
-<a class="btn btn-dark align-content-center" href="{% url 'trivia:categorias' %}">Jugar Ahora</a> {% endif%}
-<html>
-
 <head>
     <div>
         <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6129d8707e9cd40013e2cb0f&product=inline-share-buttons" async="async"></script>
     </div>
 </head>
+
+<h3><span class="badge bg-success">
+    Comparte tus puntajes:
+</span></h3>
 
 <body>
     <div class="sharethis-inline-share-buttons"></div>
