@@ -27,7 +27,7 @@ def pregunchaco(request):
         'categoria': request.GET.get('categoria'),
         'logo_categoria' : request.GET.get('categoria.logo_url()'),
     }
-    return render(request, 'pregunchaco.html', context)
+    return render(request, 'preguntasTest.html', context)
 
 @login_required(login_url='/login')
 def empezar_pregunchaco(request):

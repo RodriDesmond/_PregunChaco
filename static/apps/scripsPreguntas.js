@@ -1,7 +1,9 @@
-let base_preguntas = readText("base-preguntas.json")
+let base_preguntas = readText(`../api/pregunchaco/`)
 let interpre_bp = JSON.parse(base_preguntas)
-let pregunta
+console.log(interpre_bp)
+let pregunta = interpre_bp.data
 let posibles_respuestas
+let preguntaIndividual
 let btn_correspondiente = [
     select_id("btn1"),
     select_id("btn2"),
@@ -12,43 +14,29 @@ let btn_correspondiente = [
 escogerPreguntaAleatoria()
 
 function escogerPreguntaAleatoria() {
-    escogerPregunta(Math.floor(Math.random() * interpre_bp.length))
+    escogerPregunta(Math.floor(Math.random() * pregunta.length))
 }
 
 function escogerPregunta(n) {
     select_id("barra").classList.add("finBarra")
     select_id("barra").classList.remove("inicioBarra")
-    pregunta = interpre_bp[n]
-    select_id("categoria").innerHTML = pregunta.categoria
-    select_id("pregunta").innerHTML = pregunta.pregunta
-    select_id("imagen").setAttribute("src", pregunta.imagen)
-    style("imagen").objectFit = pregunta.objectFit
-    desordenarRespuestas(pregunta)
+    preguntaIndividual = pregunta[n]
+    console.log(pregunta)
+    select_id("categoria").innerHTML = preguntaIndividual.categoria
+    select_id("pregunta").innerHTML = preguntaIndividual.pregunta_enunciado
+    select_id("imagen").setAttribute("src", preguntaIndividual.imagen)
+    style("imagen").objectFit = "cover"
+    select_id("btn1").innerHTML = preguntaIndividual.respuestas[0].respuesta
+    select_id("btn2").innerHTML = preguntaIndividual.respuestas[1].respuesta
+    select_id("btn3").innerHTML = preguntaIndividual.respuestas[2].respuesta
+    select_id("btn4").innerHTML = preguntaIndividual.respuestas[3].respuesta
 
-    if (pregunta.imagen) {
-        style("imagen").height = "200px"
-        style("imagen").width = "100%"
-    } else {
-        style("imagen").height = "0px"
-        style("imagen").width = "0px"
-    }
 }
 
-function desordenarRespuestas(pregunta) {
-    posibles_respuestas = [pregunta.respuesta,
-    pregunta.incorrecta1,
-    pregunta.incorrecta2,
-    pregunta.incorrecta3
-    ]
-    posibles_respuestas.sort(() => Math.random() - 0.5)
-    select_id("btn1").innerHTML = posibles_respuestas[0]
-    select_id("btn2").innerHTML = posibles_respuestas[1]
-    select_id("btn3").innerHTML = posibles_respuestas[2]
-    select_id("btn4").innerHTML = posibles_respuestas[3]
-}
+
 
 function oprimir_btn(i) {
-    if (posibles_respuestas[i] == pregunta.respuesta) {
+    if (preguntaIndividual.respuestas[i].correcta) {
         btn_correspondiente[i].style.background = "lightgreen"
     } else if (i == 4) {
         reiniciar()
