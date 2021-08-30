@@ -3,6 +3,7 @@ let interpre_bp = JSON.parse(base_preguntas)
 console.log(interpre_bp)
 let pregunta = interpre_bp.data
 let posibles_respuestas
+let preguntaIndividual
 let btn_correspondiente = [
     select_id("btn1"),
     select_id("btn2"),
@@ -19,7 +20,7 @@ function escogerPreguntaAleatoria() {
 function escogerPregunta(n) {
     select_id("barra").classList.add("finBarra")
     select_id("barra").classList.remove("inicioBarra")
-    let preguntaIndividual = pregunta[n]
+    preguntaIndividual = pregunta[n]
     console.log(pregunta)
     select_id("categoria").innerHTML = preguntaIndividual.categoria
     select_id("pregunta").innerHTML = preguntaIndividual.pregunta_enunciado
@@ -29,12 +30,13 @@ function escogerPregunta(n) {
     select_id("btn2").innerHTML = preguntaIndividual.respuestas[1].respuesta
     select_id("btn3").innerHTML = preguntaIndividual.respuestas[2].respuesta
     select_id("btn4").innerHTML = preguntaIndividual.respuestas[3].respuesta
+
 }
 
 
 
 function oprimir_btn(i) {
-    if (posibles_respuestas[i] == pregunta.respuesta) {
+    if (preguntaIndividual.respuestas[i].correcta) {
         btn_correspondiente[i].style.background = "lightgreen"
     } else if (i == 4) {
         reiniciar()
