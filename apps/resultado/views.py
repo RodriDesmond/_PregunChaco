@@ -1,22 +1,24 @@
+from django.contrib.auth.models import User
 from apps.trivia.models import Categoria
 from django.http import request
 from django.http.response import HttpResponse, JsonResponse
 from django.urls.base import reverse_lazy
-from apps.preguntas.models import Pregunta, Respuesta
+from apps.preguntas.models import Pregunta
 import json
 from apps.resultado.models import Puntaje
-from django.shortcuts import redirect, render
+from django.shortcuts import  render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 @login_required(login_url='/login')
-def view_puntaje(request):
-    user = request.user
+def view_puntaje(request,pk):
+    user = User.objects.get(pk=pk)
     puntaje = Puntaje.objects.filter(user=user)
     context ={
-        'puntaje' :puntaje
+        'puntaje' :puntaje,
+        'user':user
     }
     return render(request,'puntajes/puntaje.html', context)
 
@@ -52,7 +54,6 @@ def scoreboard(request):
                 'user' : p.user.username,
                 'puntaje' : p.puntaje,
                 'fecha' : p.update,
-
             })
 
         payload = {'status': True, 'data': data}

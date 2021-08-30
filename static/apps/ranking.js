@@ -5,7 +5,6 @@ var app = new Vue({
         return {
             categoria: "",
             puntaje: [],
-
         }
     },
     methods: {
@@ -17,7 +16,6 @@ var app = new Vue({
                     console.log(result)
                     _this.puntaje = result.data
                 })
-
         },
         filtrarYordenar: function() {
             return this.puntaje.filter(p => !p.categoria.indexOf(this.categoria)).slice().sort(function(a, b) {
@@ -32,5 +30,4 @@ var app = new Vue({
         this.getRanking()
         console.log('Pagina Cargada')
     }
-
 });
