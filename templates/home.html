@@ -1,15 +1,21 @@
- {% extends 'base.html' %} {% block content %}
-<form>
-    <div class="form-goup">
-        <div class="input-group mb-3">
-            <select name="categoria" class="form-select" id="inputGroupSelect02">
-              <option selected name="categoria">Elegir una categoria...</option>
-              {% for categoria in categorias %}
-              <option value="{{categoria.nombre_categoria}}">{{categoria.nombre_categoria}}</option>
-              {% endfor %}
-            </select>
-            <button class="btn btn-success" id="comenzar-btn">¡EMPEZAR!</button>
+ {% extends 'base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="/static/css/home.css">
+
+<div class="col-md-4 mt-4">
+    <div class="card profile-card-5">
+        <div class="card-img-block">
+            <img class="card-img-top" src="{{user.perfil.imagen_perfil.url}}" alt="Card image cap">
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title">Hola {{user.username}}</h5>
+            <p class="card-text">Bienvenido a PregunChaco</p>
+
         </div>
     </div>
-</form>
+</div>
+
+</div>
+</div>
+</section>
 {% endblock %}

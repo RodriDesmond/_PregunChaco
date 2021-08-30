@@ -3,24 +3,62 @@
 <!-- ESTE HIDDEN INPUT PASA EL NOMBRE DE LA CATEGORIA AL JS-->
 <input type="hidden" id="categoria" name="categoria" value="{{categoria}}">
 
+<!--CSS para cada pregunta-->
+<link rel="stylesheet" href="/static/css/cartaPregunta.css">
+
+<!--Este modal se activa terminar la trivia-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">{{categoria}}: Puntaje guardado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>¡Gracias por jugar!</h3>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="{% url 'ranking:puntaje' %}" role="button">Ver tus resultados</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="app">
     <img v-bind:src="[preguntas[0].logo_categoria]" class="img-fluid" id="logo">
     <form @submit.prevent="enviarResultado()">
-        <div v-for="(pregunta,index) in preguntas" :key="index ">
-            <img v-bind:src="[pregunta.imagen]" class="img-fluid ">
-            <hr>
-            <h4>[[pregunta.pregunta_enunciado]]</h4>
+        <div class="card">
+            <div v-for="(pregunta,index) in preguntas" :key="index ">
+                <div class="card-block">
+                    </hr>
+                    <h5 class="card-title">[[pregunta.pregunta_enunciado]]</h5>
+                    <img v-bind:src="[pregunta.imagen]" class="card-img-top" alt="...">
+                </div>
 
-            <div class="form-check" v-for="(respuesta,i) in pregunta.respuestas">
-                <input @change="checkRespuesta($event,index,i, pregunta.id)" :value="respuesta.respuesta" class="form-check-input" type="radio" :name="'radio-'+pregunta.id" :id="'radio-'+pregunta.id">
-                <label class="form-check-label" for="'radio-'+pregunta.id">
-                    [[i+1]]- [[respuesta.respuesta]] 
-            </label>
+                <ul class="list-group list-group-flush">
+                    <div class="form-check" v-for="(respuesta,i) in pregunta.respuestas">
+                        <li class="list-group-item"> <input @change="checkRespuesta($event,index,i, pregunta.id)" :value="respuesta.respuesta" class="form-check-input" type="radio" :name="'radio-'+pregunta.id" :id="'radio-'+pregunta.id">
+                            <label class="form-check-label" for="'radio-'+pregunta.id">
+                            [[respuesta.respuesta]] 
+                        </label>
+                        </li>
+
+                    </div>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <p :id=" 'mensaje_respuesta-'+pregunta.id "></p>
+                    <blockquote class="blockquote">
+                        <p :id=" 'dato-'+pregunta.id "></p>
+                    </blockquote>
+                </ul>
             </div>
-            <p :id=" 'mensaje_respuesta-'+pregunta.id "></p>
+
         </div>
-        <button class="btn btn-danger" type="submit">Terminar</button>
+        <div class="d-grid gap-2">
+            <button class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">Terminar</button>
+        </div>
     </form>
+
 </div>
 
 <script src="{% static 'apps/trivia.js'%} "></script>

@@ -6,6 +6,7 @@ var app = new Vue({
             categoria: document.getElementById("categoria").value,
             preguntas: [],
             soluciones: [],
+            curiosidad: false,
         }
     },
     methods: {
@@ -34,25 +35,27 @@ var app = new Vue({
                     _this.preguntas = result.data
                 })
         },
-        checkRespuesta(event, resultado_index, id) {
+        checkRespuesta(event, id) {
             this.preguntas.map(pregunta => {
                 respuestas = pregunta.respuestas
                 id = pregunta.id
                 var element = document.getElementById(`mensaje_respuesta-${id}`)
+                var dato = document.getElementById(`dato-${id}`)
                 var radios = document.querySelectorAll(`#radio-${id}`)
                 for (var i = 0; i < respuestas.length; i++) {
                     if (respuestas[i].respuesta == event.target.value) {
-
                         for (var j = 0; j < respuestas.length; j++) {
                             radios[j].disabled = true
                         }
                         if (respuestas[i].correcta) {
                             element.classList = "text-success mt-3"
                             element.innerHTML = "Correcto 🤩"
+                            dato.innerHTML = `<strong><em>${[[pregunta.dato]]}</em></strong >`
                             correcto = true
                         } else {
                             element.classList = "text-danger mt-3"
                             element.innerHTML = "Incorrecto 😵"
+                            dato.innerHTML = `<strong><em>${[[pregunta.dato]]}</em></strong >`
                             correcto = false
                         }
                         solucion = {
@@ -67,8 +70,7 @@ var app = new Vue({
             })
         }
     },
-
-    created() {
+    mounted() {
         this.getPreguntas()
         console.log('Pagina Cargada')
     },

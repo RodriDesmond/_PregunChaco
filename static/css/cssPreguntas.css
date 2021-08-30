@@ -1,18 +1,18 @@
-*{
+* {
     transition: all 0.3s;
     font-family: calibri;
     font-size: 120%;
 }
 
-body{
+body {
     background: slategray;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-.contenedor{
-    width: 98vw;
+.contenedor {
+    width: 50vw;
     height: 97vh;
     display: inline-flex;
     flex-direction: column;
@@ -20,29 +20,31 @@ body{
     align-items: center;
 }
 
-.encabezado{
+.encabezado {
     background: white;
     min-width: 300px;
     max-width: 600px;
     width: 70%;
     padding: 10px;
 }
-.categoria{
+
+.categoria {
     opacity: 0.3;
     text-align: left;
 }
 
-.pregunta{
+.pregunta {
     padding: 10px;
 }
 
-.imagen{
+.imagen {
+    padding: 10px;
     object-fit: cover;
     height: 200px;
     width: 100%;
 }
 
-.btns{
+.btns {
     background: white;
     width: 60%;
     max-width: 550px;
@@ -50,19 +52,20 @@ body{
     margin: 5px;
 }
 
-.btns:hover{
+.btns:hover {
     background: orange;
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.inicioBarra{
+.inicioBarra {
     width: 0%;
 }
-.finBarra{
+
+.finBarra {
     width: 100%;
 }
 
-.animarBarra{
+.animarBarra {
     transition: all 10s ease-out;
 }
