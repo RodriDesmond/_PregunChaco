@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static%} {% block content%}
+
+<div id="app">
+    <p class="h5">Selecciona una categoria.</p>
+    <select name="categoria" @change="onChange($event)" class="form-select" v-model="categoria">
+        <option value="Geografía">Geografía</option>
+        <option value="Deporte">Deporte</option>
+        <option value="Cultura y arte">Cultura y arte</option>
+     </select>
+
+    <div class="container mt-1 p-3" style="width: 400px;">
+        <p class="h5">[[categoria]]</p>
+        <ul class="list-group">
+            <div v-for="(p,index) in filtrarYordenar(categoria)">
+                <div v-if="index <= 4 && categoria != '' ">
+                    <li class="list-group-item d-flex justify-content-between align-items-center rounded-3">
+                        <h3><strong>[[index+1]]. [[p.user]]</strong></h3>
+                        <h3><span class="badge bg-success">[[p.puntaje]] puntos</span></h3>
+                    </li>
+                    <p style="text-align: end">Fecha: [[p.fecha]]</p>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+<script src="{% static 'apps/ranking.js'%} "></script>
+{%endblock%}

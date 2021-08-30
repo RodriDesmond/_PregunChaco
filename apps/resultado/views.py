@@ -1,4 +1,6 @@
-from django.http.response import JsonResponse
+from apps.trivia.models import Categoria
+from django.http import request
+from django.http.response import HttpResponse, JsonResponse
 from django.urls.base import reverse_lazy
 from apps.preguntas.models import Pregunta, Respuesta
 import json
@@ -16,7 +18,7 @@ def view_puntaje(request):
     context ={
         'puntaje' :puntaje
     }
-    return render(request,'puntaje.html', context)
+    return render(request,'puntajes/puntaje.html', context)
 
 @csrf_exempt
 @login_required(login_url='/login')
@@ -37,3 +39,36 @@ def validar_puntos(request):
     puntaje_total.save()
 
     return JsonResponse({'message' : 'puntos cargados' , 'status':True})
+
+
+def scoreboard(request):
+    try:
+        puntajes = Puntaje.objects.all()
+        puntajes = list(puntajes)
+        data = []
+        for p in puntajes:
+            data.append({
+                'categoria': p.categoria,
+                'user' : p.user.username,
+                'puntaje' : p.puntaje,
+                'fecha' : p.update,
+
+            })
+
+        payload = {'status': True, 'data': data}
+        return JsonResponse(payload)
+
+    except Exception as e:
+        print(e)
+    return HttpResponse("Algo malio sal")
+
+
+def view_ranking(request):
+
+    context = {
+        'categoria': request.GET.get('categoria'),
+        'user_id' : request.GET.get('user_id'),
+        'puntaje' : request.GET.get('puntaje'),
+        'fecha' : request.GET.get('fecha'),
+    }
+    return render(request,'puntajes/ranking.html', context)
