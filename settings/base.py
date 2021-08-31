@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
 from django.contrib.messages import constants as messages
 
 
@@ -45,8 +47,6 @@ INSTALLED_APPS = [
     'apps.trivia',
     'apps.usuarios',
     'apps.resultado',
-
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +113,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 
 
