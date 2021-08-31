@@ -2,10 +2,10 @@ from .base import *
 
 DEBUG = False
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY', "default_value")
 
 # SECURITY WARNING: update this when you have the production host
-ALLOWED_HOSTS = ['pregunchaco.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
