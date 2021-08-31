@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'apps.trivia',
     'apps.usuarios',
     'apps.resultado',
-    'django_heroku',
 ]
 
 MIDDLEWARE = [
