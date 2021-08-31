@@ -1,0 +1,1 @@
+web gunicorn pregunchaco.wsgi:aplication --log-file -
