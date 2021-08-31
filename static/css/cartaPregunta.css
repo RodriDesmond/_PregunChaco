@@ -1,8 +1,6 @@
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 *:hover {
@@ -19,7 +17,6 @@ section {
 
 * {
     transition: all 0.3s;
-    font-family: "Poppins", sans-serif;
     font-weight: initial;
 }
 

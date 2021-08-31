@@ -13,12 +13,11 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required(login_url='/login')
-def view_puntaje(request,pk):
-    user = User.objects.get(pk=pk)
+def view_puntaje(request):
+    user = request.user
     puntaje = Puntaje.objects.filter(user=user)
     context ={
         'puntaje' :puntaje,
-        'user':user
     }
     return render(request,'puntajes/puntaje.html', context)
 
@@ -34,8 +33,7 @@ def validar_puntos(request):
     for solucion in soluciones:
         pregunta = Pregunta.objects.filter(id = solucion.get('pregunta_id')).first()
         if solucion.get('correcto'):
-            puntaje = puntaje + pregunta.puntos
-        
+            puntaje = puntaje + pregunta.puntos        
    
     puntaje_total = Puntaje(categoria = categoria , puntaje = puntaje  , user = user)
     puntaje_total.save()

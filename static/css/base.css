@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 * {
     transition: all 0.3s;
-    font-family: calibri;
+    font-family: 'Kanit', sans-serif;
+    ;
 }
 
 #contenedor-principal {

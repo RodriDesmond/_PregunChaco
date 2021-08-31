@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 * {
-    transition: all 0.1s;
-    font-family: calibri;
+    transition: all 0.3s;
+    font-family: 'Kanit', sans-serif;
     font-size: 120%;
 }
 
