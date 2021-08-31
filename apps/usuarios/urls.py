@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import  *
 from apps.usuarios import views
 from django.contrib.auth.views import LoginView, LogoutView
@@ -12,4 +14,4 @@ urlpatterns = [
     #Perfil de usuario
     path('<int:pk>/perfil/',VerPerfilView.as_view(),name='perfil'),
     path('editar_perfil/', UserEditView.as_view(), name='editar_perfil'),    
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
