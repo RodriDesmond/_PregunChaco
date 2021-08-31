@@ -5,7 +5,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> {% block navbar %} {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--LOGO-->
     <div class="container-sm">
         <img src="{% static '/imagenes/Logo_PregunChaco_729_376.png'%}" class="img-fluid" id="imagen" alt="...">
@@ -26,7 +26,6 @@
     <div id="contenedor-principal" class="container-sm shadow mt-5 mb-2 pt-2 pb-2 rounded-3">
         {% block content %} {% endblock %}
     </div>
-</body>
-{% include 'footer.html' %}
+</body>{% include 'footer.html' %}
 
 </html>

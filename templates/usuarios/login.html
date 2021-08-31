@@ -32,17 +32,7 @@
         {%endfor%} {% endif %}
         <div class="login-info-container">
             <h1 class="title">Ingresá con:</h1>
-            <div class="social-login">
-                <div class="social-login-element">
-                    <img class="imagen-social" src="{% static 'imagenes/google.svg' %}" alt="google-imagen" />
-                    <span>Google</span>
-                </div>
-                <div class="social-login-element">
-                    <img class="imagen-social" src="{% static 'imagenes/facebook.svg' %}" alt="facebook-imagen" />
-                    <span>Facebook</span>
-                </div>
-            </div>
-            <p>o</p>
+
             <form method="post" class="inputs-container form">
                 {% csrf_token %} {{ form.as_p }}
 

@@ -27,7 +27,7 @@ def pregunchaco(request):
         'categoria': request.GET.get('categoria'),
         'logo_categoria' : request.GET.get('categoria.logo_url()'),
     }
-    return render(request, 'preguntasTest.html', context)
+    return render(request, 'pregunchaco.html', context)
 
 @login_required(login_url='/login')
 def empezar_pregunchaco(request):
@@ -48,7 +48,7 @@ def empezar_pregunchaco(request):
                 "logo_categoria":pregunta_obj.categoria.logo_url(),
                 "pregunta_enunciado": pregunta_obj.pregunta_enunciado,
                 "dato": pregunta_obj.dato,
-                "puntos": pregunta_obj.puntos,
+                "puntaje": pregunta_obj.puntos,
                 "respuestas": pregunta_obj.obtener_respuesta(),
                 "imagen" : pregunta_obj.imagen_url(),
             })
