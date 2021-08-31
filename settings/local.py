@@ -1,7 +1,7 @@
 from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -24,6 +24,3 @@ STATICFILES_DIRS = ( os.path.join(BASE_DIR,'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 LOGIN_REDIRECT_URL = '/'
-
-django_heorku.setting(locals())
-
