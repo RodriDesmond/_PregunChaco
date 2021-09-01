@@ -34,7 +34,7 @@
                         <li><a class="dropdown-item" href="{% url 'usuarios:editar_perfil' %}">Editar Perfil</a></li>
                         <li><a class="dropdown-item" href="{% url 'ranking:puntaje' %}">Tus Puntajes</a></li>
                         {% else %}
-                        <li><a class="dropdown-item" href="{% url 'usuarios:perfil' editar_perfil %}">Edita tu perfil</a></li>
+                        <li><a class="dropdown-item" href="{% url 'usuarios:editar_perfil' %}">Edita tu perfil</a></li>
                         {% endif %}
                         <li>
                             <hr class="dropdown-divider">
