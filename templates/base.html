@@ -10,6 +10,7 @@
     <div class="container-sm">
         <img src="{% static '/imagenes/Logo_PregunChaco_729_376.png'%}" class="img-fluid" id="imagen" alt="...">
     </div>
+    {% block navbar %}{%endblock%}
 
     <!-- ENLACES PARA FAVICON -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icono/apple-touch-icon.png' %}">
@@ -33,7 +34,7 @@
 
 <body background="/media/Fondo_Categorias_1920_1080.png">
 
-    <div id="contenedor-principal" class="container-sm shadow mt-5 mb-2 pt-2 pb-2 rounded-3">
+    <div id="contenedor-principal" class="container-fluid shadow mt-5 mb-2 pt-2 pb-2 rounded-3">
         {% block content %} {% endblock %}
     </div>
 </body>{% include 'footer.html' %}

@@ -7,7 +7,7 @@
         <div class="card-img-block">
             {%if user.perfil.imagen_perfil.url%}
             <img class="card-img-top" src="{{user.perfil.imagen_perfil.url}}" alt="Profile Pic"> {%else%}
-            <img class="card-img-top" src="{% static 'imagenes/default_profile_pic.png'%}" alt="Profile Pic"> {% endif %}
+            <img class="card-img-top" src="{% static '/imagenes/default_profile_pic.png'%}" alt="Profile Pic"> {% endif %}
         </div>
         <div class="card-body pt-0">
             <h5 class="card-title">Hola {{user.username}}</h5>
