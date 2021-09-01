@@ -106,3 +106,21 @@ p {
     font-size: 14px;
     font-weight: 300;
 }
+
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
+
+@media screen and (max-width: 650px) {
+    #contenedor-principal {
+        width: 90%;
+    }
+}
+
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR MAS CHICO <---------- */
+
+@media screen and (max-width: 500px) {
+    #contenedor-principal {
+        width: 90%;
+    }
+}
