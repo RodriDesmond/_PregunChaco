@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
  {% extends 'base.html' %} {% block content %}
 <form>
     <div class="form-goup">
@@ -9,7 +10,30 @@
               {% endfor %}
             </select>
             <button class="btn btn-success" id="comenzar-btn">¡EMPEZAR!</button>
+=======
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="/static/css/home.css">
+
+<div class="col-md-4 mt-4">
+    <div class="card profile-card-5">
+        <div class="card-img-block">
+            {%if user.perfil.imagen_perfil.url%}
+            <img class="card-img-top" src="{{user.perfil.imagen_perfil.url}}" alt="Profile Pic"> {%else%}
+            <img class="card-img-top" src="{% static '/imagenes/default_profile_pic.png'%}" alt="Profile Pic"> {% endif %}
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title">Hola {{user.username}}</h5>
+            <p class="card-text">Bienvenido a PregunChaco</p>
+        </div>
+        <div id=botonJugar>
+            <h1> <a class="jugar" href="{% url 'trivia:categorias' %}">JUGAR</a></h1>
+>>>>>>> Stashed changes
         </div>
     </div>
-</form>
+</div>
+
+</div>
+</div>
+</section>
 {% endblock %}

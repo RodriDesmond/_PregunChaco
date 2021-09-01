@@ -6,8 +6,8 @@
 }
 
 .contenedor {
-    width: 50vw;
-    height: 97vh;
+    width: 55rem;
+    height: auto;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -50,4 +50,13 @@
     background: orange;
     cursor: pointer;
     transform: scale(1.05);
+}
+
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
+
+@media screen and (max-width: 650px) {
+    .contenedor {
+        width: 90%;
+    }
 }
