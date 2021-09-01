@@ -1,59 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
 * {
-    transition: all 0.3s;
-    font-family: 'Kanit', sans-serif;
-    ;
+  transition: all 0.3s;
+  font-family: "Kanit", sans-serif;
+}
+
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #contenedor-principal {
-    background: rgb(116, 170, 107);
-    background: radial-gradient(circle, rgba(116, 170, 107, 1) 0%, rgba(155, 219, 144, 1) 0%, rgba(0, 175, 78, 1) 72%);
-    height: auto;
-    width: 55em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    overflow: hidden;
-    align-items: center;
+  background: rgb(116, 170, 107);
+  background: radial-gradient(
+    circle,
+    rgba(116, 170, 107, 1) 0%,
+    rgba(155, 219, 144, 1) 0%,
+    rgba(0, 175, 78, 1) 72%
+  );
+  height: auto;
+  width: 55em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  align-items: center;
 }
 
 #logo {
-    position: relative;
-    display: inline-block;
-    text-align: center;
+  position: relative;
+  display: inline-block;
+  text-align: center;
 }
 
 #nombre-categoria {
-    color: ghostwhite;
-    position: absolute;
-    top: 57%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    font-size: 90px;
-    font-family: fantasy;
+  color: ghostwhite;
+  position: absolute;
+  top: 57%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  font-size: 90px;
+  font-family: fantasy;
 }
 
 #imagen {
-    object-fit: scale-down;
-    height: 200px;
-    width: 100%;
+  object-fit: scale-down;
+  height: 200px;
+  width: 100%;
 }
-
 
 /* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
 
 @media screen and (max-width: 650px) {
-    #contenedor-principal {
-        width: 90%;
-    }
+  #contenedor-principal {
+    width: 90%;
+  }
 }
-
 
 /* CAMBIO DE PANTALLA -----------------> CELULAR MAS CHICO <---------- */
 
 @media screen and (max-width: 500px) {
-    #contenedor-principal {
-        width: 90%;
-    }
+  #contenedor-principal {
+    width: 90%;
+  }
 }
