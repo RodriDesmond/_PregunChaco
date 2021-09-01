@@ -14,11 +14,8 @@
 
     <!-- ENLACES PARA FAVICON -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icono/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icono/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icono/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'icono/site.webmanifest' %}">
     <link rel="mask-icon" href="{% static 'icono/safari-pinned-tab.svg' %}" color="#5bbad5">
-    <link rel="shortcut icon" href="{% static 'icono/favicon.ico' %}">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="{% static 'icono/browserconfig.xml' %}">
     <meta name="theme-color" content="#ffffff">
@@ -34,7 +31,7 @@
 
 <body background="/media/Fondo_Categorias_1920_1080.png">
 
-    <div id="contenedor-principal" class="container-fluid shadow mt-5 mb-2 pt-2 pb-2 rounded-3">
+    <div id="contenedor-principal" class="container-fluid shadow mt-4 mb-4  rounded-3">
         {% block content %} {% endblock %}
     </div>
 </body>{% include 'footer.html' %}

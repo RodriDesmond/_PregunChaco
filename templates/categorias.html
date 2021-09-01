@@ -1,21 +1,33 @@
- {% extends 'base.html' %} {%load static%} {% block content %} 
+ {% extends 'base.html' %} {%load static%} {% block content %}
 
 <!--CSS para cada pregunta-->
 <style>
-    .botonesCategoria {
+    .form-goup {
+        margin-top: 15%;
         display: flex;
         flex-direction: column;
         height: 4rem;
-        width: 50%;
-        background-color: #fff;
-      }
-      
+        width: 95%;
+    }
+    
+    .form-select {
+        border: 2px solid #134611;
+    }
+    
+    .btn {
+        border: 2px solid #134611;
+        box-shadow: #134611;
+    }
+    
+    input:focus {
+        box-shadow: #134611;
+    }
 </style>
 
 <form>
     <div class="form-goup">
         <div class="input-group">
-            <select name="categoria" class="form-select" id="inputGroupSelect02">
+            <select name="categoria" class="form-select" id="inputGroupSelect">
               <option selected name="categoria">Elegir una categoria...</option>
               {% for categoria in categorias %}
               <option value="{{categoria.nombre_categoria}}">{{categoria.nombre_categoria}}</option>

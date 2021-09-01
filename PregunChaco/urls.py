@@ -19,6 +19,9 @@ from django.urls import path, include
 from django.urls.conf import re_path
 from django.views.static import serve
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
+
+favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +30,6 @@ urlpatterns = [
     path('',include('apps.resultado.urls',namespace='ranking')), 
     ## mediaConfiguration —— Con la configuración de MEDIA_ROOT en la configuración, puede acceder a la carpeta de medios y a los archivos en la barra de direcciones del navegador
     re_path(r'media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
+    #FavIcon    
+    re_path(r'^favicon\.ico$', favicon_view),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

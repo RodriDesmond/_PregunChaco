@@ -31,7 +31,6 @@ var app = new Vue({
             fetch(`/api/pregunchaco/?categoria=${this.categoria}`)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     _this.preguntas = result.data
                 })
         },
