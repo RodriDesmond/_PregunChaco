@@ -13,9 +13,15 @@
             <h5 class="card-title">Hola {{user.username}}</h5>
             <p class="card-text">Bienvenido a PregunChaco</p>
         </div>
+        {% if user.perfil.id %}
         <div id=botonJugar>
             <h1> <a class="jugar" href="{% url 'trivia:categorias' %}">JUGAR</a></h1>
         </div>
+        {% else %}
+        <div id=botonJugar>
+            <h1> <a class="jugar" href="{% url 'usuarios:crear_perfil' %}">CREA TU PERFIL PARA PODER JUGAR</a></h1>
+        </div>
+        {% endif %}
     </div>
 </div>
 

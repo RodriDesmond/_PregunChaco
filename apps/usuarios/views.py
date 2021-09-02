@@ -1,33 +1,25 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
+from django.urls.base import reverse
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
-from apps.usuarios.forms import UserRegisterForm
+from django.views.generic.edit import CreateView, UpdateView
+from apps.usuarios.forms import CrearPerfil, UserRegisterForm
 from django.shortcuts import get_object_or_404, render, HttpResponse, redirect, HttpResponseRedirect
 from .models import *
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-def registro(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            messages.success(request, f'Usuario {username} creado correctamente')
-            return redirect('/login/')
-    else:
-        form = UserRegisterForm()    
-
-    context = { 'form' : form }
-    return render(request, 'usuarios/registro.html', context)
+class registro(CreateView):
+        form_class = UserRegisterForm
+        template_name = 'usuarios/registro.html'
+        success_url = reverse_lazy('usuarios:login')
+        
 
 class UserEditView(UpdateView):
     model = Perfil
     template_name= 'usuarios/editar_perfil.html'    
     fields = ['email','username', 'first_name','last_name','imagen_perfil']
     success_url=reverse_lazy('trivia:home')   
-
 
 class VerPerfilView(DetailView):
     model = Perfil
@@ -42,4 +34,14 @@ class VerPerfilView(DetailView):
         context["user_pag"] = user_pag
         return context
 
+class CrearPerfil(CreateView):
+        form_class = CrearPerfil
+        template_name = 'usuarios/crear_perfil.html'
+        success_url = reverse_lazy('trivia:home')
+
+        def form_valid(self, form):
+            perfil = form.save(commit=False)
+            perfil.user = get_object_or_404(User,username=self.request.user)
+            perfil.save()
+            return HttpResponseRedirect(reverse('trivia:home'))
 
