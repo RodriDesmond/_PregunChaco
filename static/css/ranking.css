@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+* {
+    transition: all 0.3s;
+    font-family: "Kanit", sans-serif;
+}
+
+#container {
+    background: rgb(116, 170, 107);
+    background: radial-gradient( circle, rgba(116, 170, 107, 1) 0%, rgba(155, 219, 144, 1) 0%, rgba(0, 175, 78, 1) 72%);
+    height: auto;
+    width: 55em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    align-items: center;
+}
+
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR <---------- */
+
+@media screen and (max-width: 650px) {
+    #contenedor-principal {
+        width: 90%;
+    }
+}
+
+
+/* CAMBIO DE PANTALLA -----------------> CELULAR MAS CHICO <---------- */
+
+@media screen and (max-width: 500px) {
+    #contenedor-principal {
+        width: 90%;
+    }
+}

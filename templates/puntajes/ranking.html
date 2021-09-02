@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static%} {% block content%}
-
+<link rel="stylesheet" href="/static/css/ranking.css">
 <div id="app">
     <p class="h5">Selecciona una categoria.</p>
     <select name="categoria" @change="onChange($event)" class="form-select" v-model="categoria">
@@ -10,7 +10,7 @@
         <option value="Ciencia y Educación">Ciencia y Educación</option>
      </select>
 
-    <div class="container mt-1 p-3" style="width: 400px;">
+    <div class="container mt-1 p-3">
         <p class="h5">[[categoria]]</p>
         <ul class="list-group">
             <div v-for="(p,index) in filtrarYordenar(categoria)">

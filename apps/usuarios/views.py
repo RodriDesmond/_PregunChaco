@@ -27,6 +27,7 @@ class UserEditView(UpdateView):
     form_class= EditProfileForm
     template_name= 'usuarios/editar_perfil.html'
     success_url=reverse_lazy('trivia:home')
+      
 
     def get_object(self):
         return self.request.user
