@@ -5,6 +5,10 @@ from django.db import models
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    email = models.EmailField(default='')
+    username = models.CharField(max_length=250, null=True, blank=False)
+    first_name = models.CharField(max_length=250, null=True, blank=True)
+    last_name = models.CharField(max_length=250, null=True, blank=True)
     creado = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
     imagen_perfil = models.ImageField(null=True, blank=True, upload_to="perfil/", default='default_profile_pic.png')

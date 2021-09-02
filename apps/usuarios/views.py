@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-from apps.usuarios.forms import UserRegisterForm, EditProfileForm
+from apps.usuarios.forms import UserRegisterForm
 from django.shortcuts import get_object_or_404, render, HttpResponse, redirect, HttpResponseRedirect
 from .models import *
 from django.urls import reverse_lazy
@@ -24,13 +24,10 @@ def registro(request):
 
 class UserEditView(UpdateView):
     model = Perfil
-    form_class= EditProfileForm
-    template_name= 'usuarios/editar_perfil.html'
-    success_url=reverse_lazy('trivia:home')
-      
+    template_name= 'usuarios/editar_perfil.html'    
+    fields = ['email','username', 'first_name','last_name','imagen_perfil']
+    success_url=reverse_lazy('trivia:home')   
 
-    def get_object(self):
-        return self.request.user
 
 class VerPerfilView(DetailView):
     model = Perfil
