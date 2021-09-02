@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required(login_url='/login')
-def view_puntaje(request):
+def view_puntaje(request,pk):
     user = request.user
     puntaje = Puntaje.objects.filter(user=user)
     context ={

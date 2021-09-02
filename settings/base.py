@@ -122,3 +122,5 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGOUT_REDIRECT_URL = '/'
+
