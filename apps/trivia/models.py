@@ -1,8 +1,4 @@
-from settings.local import MEDIA_ROOT
 from django.db import models
-from django.core.files.storage import FileSystemStorage
-
-fs = FileSystemStorage(location=MEDIA_ROOT) 
 
 class BaseModel(models.Model):
     creado = models.DateField(auto_now_add=True)
@@ -13,7 +9,7 @@ class BaseModel(models.Model):
 
 class Categoria(BaseModel):
     nombre_categoria = models.CharField(max_length=100)
-    logo_categoria = models.ImageField(storage = fs )
+    logo_categoria = models.ImageField(upload_to ='uploads/')
 
     def __str__(self):
         return self.nombre_categoria

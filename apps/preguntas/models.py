@@ -1,7 +1,5 @@
-from settings.local import MEDIA_ROOT
 from django.db import models
 from apps.trivia.models import BaseModel, Categoria
-from django.core.files.storage import FileSystemStorage
 import random
 
 
