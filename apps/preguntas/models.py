@@ -4,15 +4,13 @@ from apps.trivia.models import BaseModel, Categoria
 from django.core.files.storage import FileSystemStorage
 import random
 
-# Create your models here.
-fs = FileSystemStorage(location=MEDIA_ROOT)
 
 class Pregunta(BaseModel):
     categoria = models.ForeignKey(Categoria, related_name='categoria', on_delete=models.CASCADE)
     pregunta_enunciado = models.TextField(max_length=100)
     dato = models.TextField(max_length=600)
     puntos = models.PositiveIntegerField(default=5)
-    imagen = models.ImageField(storage = fs )
+    imagen = models.ImageField(upload_to ='uploads/')
 
     def __str__(self):
         return self.pregunta_enunciado
